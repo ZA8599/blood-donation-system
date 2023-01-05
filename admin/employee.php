@@ -11,6 +11,8 @@ include 'layout/navbar.php';
 
 ?>
 
+//test 
+
 <div class="container">
     <div class="row">
         <div class="panel panel-default">
