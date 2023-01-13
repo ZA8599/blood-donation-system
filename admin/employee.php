@@ -34,10 +34,10 @@ include 'layout/navbar.php';
                     <tbody>
                         <?php foreach($employees as $e): ?>
                         <tr>
-                            <td><?= $e['f_name']." ".$e['m_name']." ".$e['l_name']; ?></td>
+                            <td><?= $e['fullname']; ?></td>
                             <td><?= $e['username']; ?></td>
                             <td><?= $e['password']; ?></td>
-                            <td><?= $e['prc_nr']; ?></td>
+                            <td><?= $e['employeeID']; ?></td>
                             <td><?= $e['designation']; ?></td>
                             <td><?= $e['mobile_nr']; ?></td>
                             <td><a href="edit.php?id=<?= $e['id']; ?>">Edit</a></td>
