@@ -70,10 +70,10 @@ class DBConnect {
         return $stmt->fetchAll();
     }
     
-    public function updateEmployee($id,$username,$password,$firstName,$middleName,$lastName,$designation,$landline,$mobile,$birthDay){
-        $query = "UPDATE employees SET username=?, password=?,f_name=?,m_name=?,l_name=?,designation=?,landline=?,mobile_nr=?,b_day=? WHERE id=?";
+    public function updateEmployee($id,$username,$password,$fullname,$designation,$landline,$mobile,$birthDay){
+        $query = "UPDATE employees SET username=?, password=?,fullname=?,designation=?,landline=?,mobile_nr=?,b_day=? WHERE id=?";
         $stmt = $this->db->prepare($query);
-        $flag = $stmt->execute([$username,$password,$firstName,$middleName,$lastName,$designation,$landline,$mobile,$birthDay, $id]);
+        $flag = $stmt->execute([$username,$password,$fullname,$designation,$landline,$mobile,$birthDay, $id]);
         if($flag){
             return true;
         }else{
