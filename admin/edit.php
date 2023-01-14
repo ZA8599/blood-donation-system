@@ -54,7 +54,7 @@ include 'layout/_top_nav.php';
 
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3>Add Employee</h3>
+                    <h3>Update Employee Info</h3> 
                 </div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="post" action="edit.php">
