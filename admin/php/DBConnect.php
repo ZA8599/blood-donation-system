@@ -32,27 +32,27 @@ class DBConnect {
     public function auth(){
         session_start();
         if(! isset($_SESSION['username'])){
-            header("Location: http://localhost/BDManagement/admin");
+            header("Location: http://localhost/blood-donation-system/admin");
         }
     }
     
     public function checkAuth(){
         session_start();
         if(isset($_SESSION['username'])){
-            header("Location: http://localhost/BDManagement/admin/home.php");
+            header("Location: http://localhost/blood-donation-system/admin/home.php");
         }
     }
 
     public function logout(){
         session_start();
         session_destroy();
-        header("Location: http://localhost/BDManagement/admin");
+        header("Location: http://localhost/blood-donation-system/admin");
     }
 
-    public function addEmployee($username,$password,$firstName,$middleName,$lastName,$pcrNumber,$designation,$landline,$mobile,$birthDay){
-        $stmt = $this->db->prepare("INSERT INTO employees (f_name,m_name,l_name,username,password,b_day,designation,landline,mobile_nr, prc_nr)"
-                . "VALUES (?,?,?,?,?,?,?,?,?,?)");
-        if($stmt->execute([$firstName,$middleName,$lastName,$username,$password,$birthDay,$designation,$landline,$mobile,$pcrNumber]))
+    public function addEmployee($username,$password,$fullname,$pcrNumber,$designation,$landline,$mobile,$birthDay){
+        $stmt = $this->db->prepare("INSERT INTO employees (fullName,username,password,b_day,designation,landline,mobile_nr, prc_nr)"
+                . "VALUES (?,?,?,?,?,?,?,?)");
+        if($stmt->execute([$fullname,$username,$password,$birthDay,$designation,$landline,$mobile,$pcrNumber]))
             return true;
         else
             return $this->db->errorInfo();

@@ -6,9 +6,7 @@ $db->auth();
 $success = NULL;
 $message = NULL;
 if (isset($_POST['submit'])) {
-    $firstName = $_POST['firstName'];
-    $middleName = $_POST['middleName'];
-    $lastName = $_POST['lastName'];
+    $fullname = $_POST['fullname'];
     $username = $_POST['username'];
     $password = $_POST['password'];
     $dob = $_POST['dob'];
@@ -17,7 +15,7 @@ if (isset($_POST['submit'])) {
     $mobile = $_POST['mobile'];
     $pcrNumber = uniqid();
 
-    $flag = $db->addEmployee($username, $password, $firstName, $middleName, $lastName, $pcrNumber, $designation, $landline, $mobile, $dob);
+    $flag = $db->addEmployee($username, $password, $fullname, $pcrNumber, $designation, $landline, $mobile, $dob);
 
     if ($flag) {
         $success = "User has been added to the database successfully!";
@@ -50,13 +48,11 @@ include_once 'layout/navbar.php';
                 <form class="form-horizontal" role="form" method="post" action="home.php">
                     <div class="form-group">
                         <label class="col-md-3">Name:</label>
-                        <div class="col-sm-3"> <input type="text" name="firstName" class="form-control" placeholder="First Name" required="true"> </div>
-                        <div class="col-sm-3"><input type="text" name="middleName" class="form-control" placeholder="Middle Name"></div>
-                        <div class="col-sm-3"><input type="text" name="lastName" class="form-control" placeholder="Last Name" required="true"></div>
+                        <div class="col-sm-3"> <input type="text" name="fullname" class="form-control" placeholder="Full Name" required="true"> </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-3">Username:</label>
-                        <div class="col-sm-9"><input type="text" name="username" class="form-control" required="true"></div>
+                        <div class="col-sm-9"><input type="text" name="username" class="form-control" required="true" placeholder="staff@blood.com"></div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-3">Password:</label>
@@ -68,7 +64,14 @@ include_once 'layout/navbar.php';
                     </div>
                     <div class="form-group">
                         <label class="col-md-3">Designation:</label>
-                        <div class="col-sm-9"><input type="text" name="designation" class="form-control" required="true"></div>
+                        <div class="dropdown">
+                            <button class="dropbtn">Dropdown</button>
+                            <div class="dropdown-content">
+                                <a href="#">Link 1</a>
+                                <a href="#">Link 2</a>
+                                <a href="#">Link 3</a>
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-3">Landline:</label>
