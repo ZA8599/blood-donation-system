@@ -13,7 +13,8 @@ if (isset($_POST['submit'])) {
     $designation = $_POST['designation'];
     $landline = $_POST['landline'];
     $mobile = $_POST['mobile'];
-    $employeeID = uniqid();
+    /* $employeeID = uniqid(); */
+    $employeeID = $_POST['employeeID'];
 
     $flag = $db->addEmployee($username, $password, $fullname, $employeeID, $designation, $landline, $mobile, $dob);
 
@@ -45,7 +46,7 @@ include_once 'layout/navbar.php';
                 <h3>Add Employee</h3>
             </div>
             <div class="panel-body">
-                <form class="form-horizontal" role="form" method="post" action="home.php">
+                <form class="form-horizontal" name="addEployee" role="form" method="post" action="home.php">
                     <div class="form-group">
                         <label class="col-md-3">Name:</label>
                         <div class="col-sm-9"> <input type="text" name="fullname" class="form-control" placeholder="Full Name" required="true"> </div>
@@ -64,7 +65,7 @@ include_once 'layout/navbar.php';
                     </div>
                     <div class="form-group">
                         <label class="col-md-3">Designation:</label>
-                        <select class="comboBox"  name="designation" id="designation">
+                        <select class="comboBox" name="designation" id="designation" required="true" onchange="generateID()">
                             <option value="admin">Admin</option>
                             <option value="staff">Staff</option>
                             <option value="doctor">Doctor</option>
@@ -79,6 +80,7 @@ include_once 'layout/navbar.php';
                         <label class="col-md-3">Mobile:</label>
                         <div class="col-sm-9"><input type="number" min="0" max="10000000000" name="mobile" class="form-control" required="true"></div>
                     </div>
+                    <input type="hidden" id="employeeID" name="employeeID" value="">
                     <div class="form-group">
                         <label class="col-md-3"></label>
                         <button type="submit" class="btn btn-success btn-md" name="submit">Add Employee</button>
@@ -88,6 +90,41 @@ include_once 'layout/navbar.php';
         </div>
     </div>
     <div class="col-md-3"></div>
+
+    <script>
+        //create unique id for employee
+        function uniqueID(designation) {
+            const employeeID = "";
+
+            // random 9 digits, non alphabetical
+            const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+            const rndDigits = digits.sort(() => Math.random() - 0.5).slice(0, 5).join(''); 
+
+            if (designation == "admin") {
+                return "A" + rndDigits;
+            } else if (designation == "staff") {
+                return "S" + rndDigits;
+            } else if (designation == "doctor") {
+                return "D" + rndDigits;
+            } else if (designation == "nurse") {
+                return "N" + rndDigits;
+            } else {
+                //return error message
+                return "error";
+            }
+        }
+
+        function generateID() {
+            const designation = document.getElementById("designation").value;
+            const employeeID = uniqueID(designation);
+            
+            const input = document.querySelector('#employeeID');
+
+            input.value = employeeID;
+        }
+
+        generateID();
+    </script>
 </div>
 
 <?php include 'layout/_footer.php'; ?>
