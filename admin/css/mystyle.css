@@ -21,3 +21,11 @@ footer{
     font-family: tahoma;
     color: white;
 }
+
+.comboBox{
+    margin-left: 14px;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    width: 68%;
+    border-radius: 4px;
+}

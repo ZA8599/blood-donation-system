@@ -13,14 +13,14 @@ if (isset($_POST['submit'])) {
     $designation = $_POST['designation'];
     $landline = $_POST['landline'];
     $mobile = $_POST['mobile'];
-    $pcrNumber = uniqid();
+    $employeeID = uniqid();
 
-    $flag = $db->addEmployee($username, $password, $fullname, $pcrNumber, $designation, $landline, $mobile, $dob);
+    $flag = $db->addEmployee($username, $password, $fullname, $employeeID, $designation, $landline, $mobile, $dob);
 
     if ($flag) {
         $success = "User has been added to the database successfully!";
     } else {
-        $message = "Error adding the employee to the database!". $flag;
+        $message = "Error adding the employee to the database!" . $flag;
     }
 }
 $title = "Admin Home";
@@ -33,12 +33,12 @@ include_once 'layout/navbar.php';
     <div class="col-md-3"></div>
     <div class="col-md-6">
 
-        <?php if (isset($success)): ?>
+        <?php if (isset($success)) : ?>
             <div class="alert-success"><?= $success; ?></div>
         <?php endif ?>
-        <?php if (isset($message)): ?>
+        <?php if (isset($message)) : ?>
             <div class="alert-success"><?= $message; ?></div>
-<?php endif ?>
+        <?php endif ?>
 
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -48,7 +48,7 @@ include_once 'layout/navbar.php';
                 <form class="form-horizontal" role="form" method="post" action="home.php">
                     <div class="form-group">
                         <label class="col-md-3">Name:</label>
-                        <div class="col-sm-3"> <input type="text" name="fullname" class="form-control" placeholder="Full Name" required="true"> </div>
+                        <div class="col-sm-9"> <input type="text" name="fullname" class="form-control" placeholder="Full Name" required="true"> </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-3">Username:</label>
@@ -64,18 +64,16 @@ include_once 'layout/navbar.php';
                     </div>
                     <div class="form-group">
                         <label class="col-md-3">Designation:</label>
-                        <div class="dropdown">
-                            <button class="dropbtn">Dropdown</button>
-                            <div class="dropdown-content">
-                                <a href="#">Link 1</a>
-                                <a href="#">Link 2</a>
-                                <a href="#">Link 3</a>
-                            </div>
-                        </div>
+                        <select class="comboBox"  name="designation" id="designation">
+                            <option value="admin">Admin</option>
+                            <option value="staff">Staff</option>
+                            <option value="doctor">Doctor</option>
+                            <option value="nurse">Nurse</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label class="col-md-3">Landline:</label>
-                        <div class="col-sm-9"><input type="number" min="0" max="10000000000" name="landline" class="form-control" required="true"></div>
+                        <div class="col-sm-9"><input type="number" min="0" max="10000000000" name="landline" class="form-control" required="true" placeholder="office number"></div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-3">Mobile:</label>
