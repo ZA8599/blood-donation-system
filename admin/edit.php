@@ -11,9 +11,7 @@ $success = NULL;
 $message = NULL;
 if (isset($_POST['submit'])) {
     $id = $_POST['id'];
-    $firstName = $_POST['firstName'];
-    $middleName = $_POST['middleName'];
-    $lastName = $_POST['lastName'];
+    $lastName = $_POST['fullname'];
     $username = $_POST['username'];
     $password = $_POST['password'];
     $dob = $_POST['dob'];
@@ -21,7 +19,7 @@ if (isset($_POST['submit'])) {
     $landline = $_POST['landline'];
     $mobile = $_POST['mobile'];
 
-    $flag = $db->updateEmployee($id, $username, $password, $firstName, $middleName, $lastName, $designation, $landline, $mobile, $dob);
+    $flag = $db->updateEmployee($id, $username, $password, $fullname, $designation, $landline, $mobile, $dob);
 
     if ($flag) {
         $success = "User has been updated successfully!";
@@ -61,9 +59,7 @@ include 'layout/_top_nav.php';
                         <input type="hidden" name="id" value="<?= $id; ?>">
                         <div class="form-group">
                             <label class="col-md-3">Name:</label>
-                            <div class="col-sm-3"> <input type="text" value="<?= $employee[0]['f_name']; ?>" name="firstName" class="form-control" placeholder="First Name" required="true"> </div>
-                            <div class="col-sm-3"><input type="text" value="<?= $employee[0]['m_name']; ?>" name="middleName" class="form-control" placeholder="Middle Name"></div>
-                            <div class="col-sm-3"><input type="text" value="<?= $employee[0]['l_name']; ?>" name="lastName" class="form-control" placeholder="Last Name" required="true"></div>
+                            <div class="col-sm-3"><input type="text" value="<?= $employee[0]['fullname']; ?>" name="lastName" class="form-control" placeholder="Last Name" required="true"></div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-3">Username:</label>
