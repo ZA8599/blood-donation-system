@@ -115,6 +115,26 @@ if($flag){
         </div>
         <div class="col-sm-1"></div>
     </div>
+    
+     <button class="button button1 center" onclick="showForm()">REQUEST FOR BLOOD</button>
+
+    <form id="form" style="display: none;" action="submit-request.php" method="post">
+        <input type="hidden" name="donorID" value="<?= $donor[0]['id']; ?>">
+        <label for="reqName">Requester Name:</label>
+        <input type="text" id="reqName" name="reqName" placeholder="Enter your name"><br>
+
+        <label for="reqBlood">Chosen Blood Group:</label>
+        <input type="text" id="reqBlood" name="reqBlood" value="<?= $donor[0]['b_type']; ?>" readonly><br>
+
+        <label for="reqUnit">Blood Units Required</label>
+        <input type="number" name="reqUnit" min="1" placeholder="Enter Blood Units">
+
+        <label for="reqPhone">Phone number:</label>
+        <input type="tel" id="reqPhone" name="reqPhone" placeholder="Enter your phone number"><br>
+
+        <button class="btn btn-success" type="submit" name="submitReq">Submit</button>
+    </form>
+    
 </div>
 
 <?php include 'layout/_footer.php'; ?>
