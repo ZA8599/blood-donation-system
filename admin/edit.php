@@ -32,6 +32,9 @@ $employee = $db->getEmployeeById($id);
 
 $employees = $db->getEmployees();
 
+// function to generate the select box
+// $selected is the value of the option that should be selected
+// in this case, the designation of the employee
 function showSelect($selected){
     $options = ['Admin'=>'admin', 'Staff'=>'staff', 'Doctor'=>'doctor', 'Nurse'=>'nurse'];
 
@@ -88,6 +91,7 @@ include 'layout/_top_nav.php';
                         <div class="form-group">
                             <label class="col-md-3">Designation:</label>
                             <div class="col-sm-9">
+                            <!-- generate the combo box -->
                             <?php echo showSelect($employee[0]['designation']); ?>
                             </div>
                         </div>
