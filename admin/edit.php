@@ -11,6 +11,7 @@ $success = NULL;
 $message = NULL;
 if (isset($_POST['submit'])) {
     $id = $_POST['id'];
+    // combined the fullname into one field
     $fullname = $_POST['fullname'];
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -19,6 +20,7 @@ if (isset($_POST['submit'])) {
     $landline = $_POST['landline'];
     $mobile = $_POST['mobile'];
 
+    // removed first name and last name, combined into fullname
     $flag = $db->updateEmployee($id, $username, $password, $fullname, $designation, $landline, $mobile, $dob);
 
     if ($flag) {
@@ -67,6 +69,7 @@ include 'layout/_top_nav.php';
 
             <div class="panel panel-default">
                 <div class="panel-heading">
+                    <!-- updated text content -->
                     <h3>Update Employee Info</h3>
                 </div>
                 <div class="panel-body">
@@ -74,6 +77,8 @@ include 'layout/_top_nav.php';
                         <input type="hidden" name="id" value="<?= $id; ?>">
                         <div class="form-group">
                             <label class="col-md-3">Name:</label>
+
+                            <!-- removed first last name, replace with 1 input of fullname -->
                             <div class="col-sm-3"><input type="text" value="<?= $employee[0]['fullname']; ?>" name="fullname" class="form-control" placeholder="Last Name" required="true"></div>
                         </div>
                         <div class="form-group">

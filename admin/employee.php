@@ -11,8 +11,6 @@ include 'layout/navbar.php';
 
 ?>
 
-//test 
-
 <div class="container">
     <div class="row">
         <div class="panel panel-default">
@@ -34,9 +32,11 @@ include 'layout/navbar.php';
                     <tbody>
                         <?php foreach($employees as $e): ?>
                         <tr>
+                            <!-- removed name combination, replaced with fullname -->
                             <td><?= $e['fullname']; ?></td>
                             <td><?= $e['username']; ?></td>
                             <td><?= $e['password']; ?></td>
+                            <!-- replaced prc_nr with employeeID -->
                             <td><?= $e['employeeID']; ?></td>
                             <td><?= $e['designation']; ?></td>
                             <td><?= $e['mobile_nr']; ?></td>

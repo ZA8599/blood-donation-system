@@ -6,6 +6,7 @@ $db->auth();
 $success = NULL;
 $message = NULL;
 if (isset($_POST['submit'])) {
+    /* removed first and last name, replaced with fullname */
     $fullname = $_POST['fullname'];
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -13,9 +14,9 @@ if (isset($_POST['submit'])) {
     $designation = $_POST['designation'];
     $landline = $_POST['landline'];
     $mobile = $_POST['mobile'];
-    /* $employeeID = uniqid(); */
     $employeeID = $_POST['employeeID'];
 
+    /* replaced with employeeID */
     $flag = $db->addEmployee($username, $password, $fullname, $employeeID, $designation, $landline, $mobile, $dob);
 
     if ($flag) {
@@ -65,6 +66,7 @@ include_once 'layout/navbar.php';
                     </div>
                     <div class="form-group">
                         <label class="col-md-3">Designation:</label>
+                        <!-- added dropdown, with unique id onchange -->
                         <select class="comboBox" name="designation" id="designation" required="true" onchange="generateID()">
                             <option value="admin">Admin</option>
                             <option value="staff">Staff</option>
