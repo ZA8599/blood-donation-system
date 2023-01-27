@@ -122,7 +122,7 @@ class DBConnect {
     public function NewPassword($username, $password){
         $query = "UPDATE employees SET password=? WHERE username=?";
         $stmt = $this->db->prepare($query);
-        $flag = $stmt->execute([$username, $password]);
+        $flag = $stmt->execute([$password, $username]);
         if($flag){
             return true;
         }else{

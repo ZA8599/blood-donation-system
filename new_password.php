@@ -15,6 +15,7 @@ if (isset($_POST['submit'])) {
     } else {
         $message = "Error updating the employee to the database!";
     }
+    header("Location: index.php");
 }
 
 $title="Reset Password";
