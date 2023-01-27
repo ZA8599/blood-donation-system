@@ -1,3 +1,4 @@
+<!-- this interface also involve in manage blood search -->
 <?php
 $i = 0;
 require_once 'php/DBConnect.php';

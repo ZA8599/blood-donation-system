@@ -13,7 +13,6 @@ include 'layout/_header.php';
 
 include 'layout/navbar.php';
 ?>
-
 <div class="container">
     <div class="row">
         <div class="col-md-1"></div>
@@ -37,11 +36,9 @@ include 'layout/navbar.php';
                 <?php if(isset($donors[0])): ?>
                 <label>Total number of donors with <?= $donors[0]['b_type']; ?> </label><div class="emphasize"><?= count($donors); ?> Donors</div>
                 <table class="table table-condensed">
-                    <thead>
+                    <thead> // DELETE ROW FOR DOB, ADDRESS
                     <th>Name</th>
                     <th>Gender</th>
-                    <th>D.O.B</th>
-                    <th>Address</th>
                     <th>City</th>
                     <th>Blood Group</th>
                     </thead>
@@ -49,10 +46,8 @@ include 'layout/navbar.php';
                     <?php foreach($donors as $d): $i++;?>
                     
                     <tr class="<?php if($i%2==0){echo 'bg-danger';} else{echo 'bg-success';} ?>">
-                        <td><a href="../profile.php?id=<?= $d['id']; ?>"><?= $d['fname'] ." ".$d['mname']." ".$d['lname']; ?></a></td>
+                        <td><?= $d['fname'] ." ".$d['mname']." ".$d['lname']; ?></td> // DELETE DIRECT LINK TO USERS PROFILE
                         <td><?= $d['sex']; ?></td>
-                        <td><?= $d['bday']; ?></td>
-                        <td><?= wordwrap($d['h_address'],26,'<br>' ); ?></td>
                         <td><?= $d['city']; ?></td>
                         <td><?= $d['b_type']; ?></td>
                     </tr>
@@ -64,5 +59,7 @@ include 'layout/navbar.php';
         <div class="col-md-1"></div>
     </div>
 </div>
-
+<center>
+<a href="index.php"><button>HOME</button></a> <!-- ADD HOME BUTTON-->
+</center>
 <?php include 'layout/_footer.php'; ?>

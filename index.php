@@ -10,7 +10,7 @@ if(isset($_POST['loginBtn'])){
     
     $flag = $db->login($username, $password);
     if($flag){
-        header("Location: http://localhost/BDManagement/home.php");
+        header("Location: http://localhost/online-blood-bank-management-system-in-php-master/home.php");
     } else {
         $message = "Username of password was incorrect!";
     }
