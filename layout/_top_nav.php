@@ -25,8 +25,11 @@
                         } else {
                             echo '';
                         }
-                        ?>"><a href="donor.php">New Donor</a></li>
-                        
+                        ?>"><a href="#" class="dropdown-toggle" data-toggle="dropdown"> Donor <b class="caret"></b>
+                        <ul class = "dropdown-menu">
+                          <li><a href="donor.php">Add New Donor</a></li>
+                          <li><a href="viewDonor.php">View Donor</a></li>
+                      </ul>
                         <li class="<?php if(isset($setMemberActive)) { echo $setMemberActive; } else { echo ''; } ?>">
                             <a href="members.php">Our Members</a>
                         </li>
