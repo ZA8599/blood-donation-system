@@ -34,7 +34,7 @@ include 'layout/_header.php';
             </div>
             <div class="panel-body">
 
-                <form class="form-vertical" role="form" method="post" action="new_password.php">
+                <form class="form-vertical" role="form" method="post" action="forgot_password.php">
                     <div class="form-group">
                     <label for="password">Username: </label>
                     <input type="username" name="username" id="username" required>
