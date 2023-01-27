@@ -32,6 +32,7 @@ class DBConnect {
     public function auth(){
         session_start();
         if(! isset($_SESSION['username'])){
+            /* fixed the url */
             header("Location: http://localhost/BDManagement/admin");
         }
     }
@@ -39,6 +40,7 @@ class DBConnect {
     public function checkAuth(){
         session_start();
         if(isset($_SESSION['username'])){
+            /* fixed the url */
             header("Location: http://localhost/BDManagement/admin/home.php");
         }
     }
@@ -46,9 +48,11 @@ class DBConnect {
     public function logout(){
         session_start();
         session_destroy();
+        /* fixed the url */
         header("Location: http://localhost/BDManagement/admin");
     }
 
+    /* replaced pcrNumber with employeeID */
     public function addEmployee($username,$password,$fullname,$employeeID,$designation,$landline,$mobile,$birthDay){
         $stmt = $this->db->prepare("INSERT INTO employees (fullName,username,password,b_day,designation,landline,mobile_nr, employeeID)"
                 . "VALUES (?,?,?,?,?,?,?,?)");
@@ -70,6 +74,7 @@ class DBConnect {
         return $stmt->fetchAll();
     }
     
+    /* removed first name last name, replaced with fullname */
     public function updateEmployee($id,$username,$password,$fullname,$designation,$landline,$mobile,$birthDay){
         $query = "UPDATE employees SET username=?, password=?,fullname=?,designation=?,landline=?,mobile_nr=?,b_day=? WHERE id=?";
         $stmt = $this->db->prepare($query);

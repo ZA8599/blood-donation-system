@@ -12,6 +12,7 @@ if(isset($_POST['loginBtn'])){
         if($password == "123"){
             session_start();
             $_SESSION['username'] = $username;
+            /* fixed url */
             header("Location: http://localhost/BDManagement/admin/home.php");
         } else {
             $invalid = "Invalid Password!";
