@@ -1,4 +1,5 @@
  <!-- Fixed navbar -->
+
  <nav class="navbar navbar-inverse navbar-fixed-top">
    <div class="container">
      <div class="navbar-header">
@@ -44,6 +45,7 @@
          </li>
          <!--                        <li class="<?php //if(isset($setBloodRequestActive)){ echo $setBloodRequestActive; } else { echo ''; } 
                                                 ?>">
+
                             <a href="blood_request.php">Blood Requests</a>
                         </li>-->
          <li><a href="logout.php">Logout</a></li>
