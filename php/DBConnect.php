@@ -114,4 +114,19 @@ class DBConnect {
         return $stmt->fetchAll();
     }
     
+    public function CheckPassword($username){
+        $stmt = $this->db->prepare("SELECT * FROM employees WHERE username = '$username'");
+        return $stmt;
+    }
+
+    public function NewPassword($username, $password){
+        $query = "UPDATE employees SET password=? WHERE username=?";
+        $stmt = $this->db->prepare($query);
+        $flag = $stmt->execute([$username, $password]);
+        if($flag){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

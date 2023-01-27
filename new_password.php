@@ -2,15 +2,18 @@
 require_once 'php/DBConnect.php';
 $db = new DBConnect();
 
-
+$success = NULL;
+$message = NULL;
 if (isset($_POST['submit'])) {
     $username = $_POST['username'];
-    $result = $db->CheckPassword($username);
-    if ($result == 0) {
-        echo "Invalid username.";
+    $password = $_POST['password'];
+
+    $flag = $db->NewPassword($username,$password);
+
+    if ($flag) {
+        $success = "User has been updated successfully!";
     } else {
-        $_SESSION['username'] = $username;
-        header("Location: new_password.php");
+        $message = "Error updating the employee to the database!";
     }
 }
 
@@ -29,11 +32,14 @@ include 'layout/_header.php';
                 <h5> Reset Password </h5>
             </div>
             <div class="panel-body">
-                <form class="form-vertical" role="form" method="post" action="forgot_password.php">
+
+                <form class="form-vertical" role="form" method="post" action="new_password.php">
                     <div class="form-group">
-                        <label for="username">Username:</label>
-                        <input type="text" name="username" id="username" required>
-                        <input type="submit" name="submit" value="Submit">
+                    <label for="password">Username: </label>
+                    <input type="username" name="username" id="username" required>
+                    <label for="password">New Password:</label>
+                    <input type="password" name="password" id="password" required>
+                    <input type="submit" name="submit" value="Submit">
                     </div>
                 </form>
             </div>
