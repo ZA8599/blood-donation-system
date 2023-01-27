@@ -145,29 +145,17 @@ class DBConnect
         return $stmt->fetchAll();
     }
 
-    public function getRequests()
-    {
-        $stmt = $this->db->prepare("SELECT * FROM requests");
-        $stmt->execute();
-        return $stmt->fetchAll();
-    }
+    
 
-    public function updateRequest($id, $reqStatus)
-    {
-        $query = "UPDATE requests SET reqStatus=? WHERE id=?";
+    public function NewPassword($username, $password){
+        $query = "UPDATE employees SET password=? WHERE username=?";
         $stmt = $this->db->prepare($query);
-        $flag = $stmt->execute([$reqStatus, $id]);
-        if ($flag) {
+        $flag = $stmt->execute([$password, $username]);
+        if($flag){
             return true;
-        } else {
+        }else{
             return false;
         }
     }
 
-    public function getRequestById($id)
-    {
-        $stmt = $this->db->prepare("SELECT * FROM requests WHERE id=?");
-        $stmt->execute([$id]);
-        return $stmt->fetchAll();
-    }
 }
